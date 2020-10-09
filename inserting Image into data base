@@ -1,0 +1,13 @@
+##use image coloumn name data type blob 
+
+
+with open("logo.jpg","rb") as f:
+    mydata=f.read()
+    con=ConnectToDatabase()
+    cursor=con.cursor(prepared=True)
+    data=(1,mydata)
+    cursor.execute("insert into myimage values(?,?)",data)
+    con.commit()
+    print("data inserted successfully....")
+    cursor.close()
+    con.close()
