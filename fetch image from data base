@@ -1,0 +1,15 @@
+con=ConnectToDatabase()
+cursor=con.cursor()
+
+cursor.execute("select * from myimage")
+row=cursor.fetchall()
+
+while row is not None:
+    for i in row:
+        data=i[1]
+    row=cursor.fetchone()
+
+with open("mylogo.jpg","wb+") as f2:
+    f2.write(data)
+    f2.readline()
+
